@@ -27,7 +27,7 @@ def draw(func, *args):
     p_range = list(np.linspace(0.5, 1, 20))
     for p in p_range:
         t_list.append(func(p, *args))
-    return plt.plot(p_range, t_list, label=str(args))
+    plt.plot(p_range, t_list, label=str(args))
 
 
 def ff(p, a, b):
@@ -45,10 +45,10 @@ def srl(p, a):
 
 
 def dsrl(p, a):
-    d_q = df(p, a)
-    d_q_plus = df(p, a + 2)
-    d_q_minus = df(p, a - 2)
-    return d_q_plus * d_q_minus / d_q / d_q
+    d_s = srl(p, a)
+    d_s_plus = srl(p, a + 2)
+    d_s_minus = srl(p, a - 2)
+    return d_s_plus * d_s_minus / d_s / d_s
 
 
 # draw(ff, 11, 9)
@@ -63,7 +63,7 @@ def dsrl(p, a):
 #     draw(srl, i)
 
 
-for i in range(3, 33, 2):
+for i in range(5, 25, 2):
     draw(dsrl, i)
 
 
